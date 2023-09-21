@@ -1,43 +1,28 @@
-﻿int count = int.Parse(Console.ReadLine());
-int[] array = new int[count];
+﻿int[] array = { 5, 2, 10, 8, 1, -15, 4, 16};
 
-for(int i = 0; i < count; i++)
-{
-    array[i] = int.Parse(Console.ReadLine());
-}
-
-SelectionSort(array);
+BubbleSort(array);
+printArray(array);
 
 
 //selection
-void SelectionSort(int[] array)
+void BubbleSort(int[] array)
 {
-    int length = array.Length;
-    int indexMin, temp;
-
-    for(int i=0; i < length - 1; i++){
-        indexMin = i;
-        for(int j = i + 1; j < length; j++)
+    for(int i = 0; i < array.Length-1; i++)
+    {
+        for(int j = 0; j < array.Length - i - 1; j++)
         {
-            if(array[j] < array[indexMin])
-                indexMin = j;
+            if (array[j] > array[j + 1])
+            {
+                (array[j], array[j + 1])=(array[j+1], array[j]);
+            }
         }
-        temp = array[i];
-        array[indexMin] = array[i];
-        array[i] = temp;
     }
 }
-
-
-
-
-
-
 
 void printArray(int[] array)
 {
     for(int i = 0; i < array.Length; i++)
     {
-        Console.WriteLine(array[i]+" ");
+        Console.Write(array[i]+" ");
     }
 }
